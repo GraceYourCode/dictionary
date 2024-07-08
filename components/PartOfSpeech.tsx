@@ -1,4 +1,12 @@
-const PartOfSpeech = ({ meaning }: { meaning: any }) => {
+import { MouseEvent, ReactElement } from "react";
+
+const PartOfSpeech = ({
+  meaning,
+  search,
+}: {
+  meaning: any;
+  search: (e: MouseEvent<HTMLLIElement>, value: string) => void;
+}) => {
   return (
     <div className="flex flex-col gap-6">
       <header className="flex-center gap-x-3">
@@ -26,7 +34,13 @@ const PartOfSpeech = ({ meaning }: { meaning: any }) => {
           <p className="text-gray-400">Synonyms</p>
           <ul className="text-purple-700 font-semibold flex-center gap-3 flex-wrap">
             {meaning.synonyms.map((synonym: any, index: number) => (
-              <li key={index}>{synonym}</li>
+              <li
+                key={index}
+                onClick={(e) => search(e, synonym)}
+                className="cursor-pointer"
+              >
+                {synonym}
+              </li>
             ))}
           </ul>
         </footer>
@@ -37,7 +51,13 @@ const PartOfSpeech = ({ meaning }: { meaning: any }) => {
           <p className="text-gray-400">Antonyms</p>
           <ul className="text-purple-700 font-semibold flex-center gap-3 flex-wrap">
             {meaning.antonyms.map((antonym: any, index: number) => (
-              <li key={index}>{antonym}</li>
+              <li
+                key={index}
+                onClick={(e) => search(e, antonym)}
+                className="cursor-pointer"
+              >
+                {antonym}
+              </li>
             ))}
           </ul>
         </footer>
