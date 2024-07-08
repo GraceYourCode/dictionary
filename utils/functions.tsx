@@ -7,7 +7,6 @@ export const getData = async (value: string) => {
     return data.length > 0
     ? { data: data[0], info: "found" }
     : { data: data, info: "not_found" }
-    // return data[0]
   } catch (error: any) {
     return (error.message)
   }

@@ -8,29 +8,24 @@ import Image from "next/image";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import sorryIcon from "@/public/sorry.png";
 import bookAnimate from "@/public/search-book.gif";
-import failedIcon from '@/public/remove.png'
+import failedIcon from "@/public/remove.png";
 
 const Index = () => {
   const [isFocused, setIsFocused] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
   const [searchResults, setSearchResults] = useState<any>();
 
-  const searchHandler = async () => {
+  const searchHandler = async () =>
     setSearchResults(await getData(searchRef.current?.value as string));
-    console.log(searchResults);
-  };
 
-  const keyDownHandler = async (e: KeyboardEvent) => {
-    console.log(`You pressed ${e.code}.`);
-    if (e.code === "Enter") await searchHandler();
-  };
+  const keyDownHandler = async (e: KeyboardEvent) =>
+    e.code === "Enter" && (await searchHandler());
 
   useEffect(() => {
-    isFocused &&
-      document.addEventListener("keypress", keyDownHandler);
+    isFocused && document.addEventListener("keypress", keyDownHandler);
 
     return () => document.removeEventListener("keypress", keyDownHandler);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFocused]);
 
   return (

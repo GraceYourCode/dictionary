@@ -1,5 +1,4 @@
 const PartOfSpeech = ({ meaning }: { meaning: any }) => {
-  console.log(meaning);
   return (
     <div className="flex flex-col gap-5">
       <header className="flex-center gap-x-3">
@@ -28,6 +27,17 @@ const PartOfSpeech = ({ meaning }: { meaning: any }) => {
           <ul className="text-purple-700 font-semibold flex-center gap-3 flex-wrap">
             {meaning.synonyms.map((synonym: any, index: number) => (
               <li key={index}>{synonym}</li>
+            ))}
+          </ul>
+        </footer>
+      )}
+
+      {meaning.antonyms.length > 0 && (
+        <footer className="flex-center gap-x-6">
+          <p className="text-gray-400">Antonyms</p>
+          <ul className="text-purple-700 font-semibold flex-center gap-3 flex-wrap">
+            {meaning.antonyms.map((antonym: any, index: number) => (
+              <li key={index}>{antonym}</li>
             ))}
           </ul>
         </footer>
