@@ -1,5 +1,3 @@
-import { error } from "console";
-
 const url = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
 export const getData = async (value: string) => {

@@ -6,7 +6,7 @@ import { IoMoonOutline } from "react-icons/io5";
 import { MdToggleOff, MdToggleOn } from "react-icons/md";
 
 const ThemeController = () => {
-  const prefersDarkMode = window.matchMedia(
+  const prefersDarkMode = typeof window !== "undefined" && window.matchMedia(
     "(prefers-color-scheme: dark)"
   ).matches;
 
