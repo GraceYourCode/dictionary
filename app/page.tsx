@@ -5,7 +5,7 @@ import SearchBar from "@/components/SearchBar";
 import TopHeader from "@/components/TopHeader";
 import { getData } from "@/utils/functions";
 import Image from "next/image";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import sorryIcon from "@/public/sorry.png";
 import bookAnimate from "@/public/search-book.gif";
 import failedIcon from "@/public/remove.png";

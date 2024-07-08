@@ -19,7 +19,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         ref={search}
         placeholder="Enter a word..."
         className="w-full bg-transparent text-dark-bg dark:text-white"
-        onFocus={focusHandler}
+        onFocus={focusHandler} onSubmit={searchHandler}
       />
       <button onClick={searchHandler}>
         <CgSearch className="text-xl text-gray-500" />
