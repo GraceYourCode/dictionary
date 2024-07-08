@@ -1,14 +1,12 @@
-import { ChangeEvent, LegacyRef } from "react";
+import { ChangeEvent, FormEvent, LegacyRef } from "react";
 import { CgSearch } from "react-icons/cg";
 
 interface SearchBarProps {
-  focusHandler: () => void;
-  searchHandler: () => void;
+  searchHandler: (e: FormEvent) => void;
   search: LegacyRef<HTMLInputElement>;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
-  focusHandler,
   search,
   searchHandler,
 }) => {
@@ -19,7 +17,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
         ref={search}
         placeholder="Enter a word..."
         className="w-full bg-transparent text-dark-bg dark:text-white border-r"
-        onFocus={focusHandler}
       />
       <button type="submit">
         <CgSearch className="text-xl text-gray-500" />

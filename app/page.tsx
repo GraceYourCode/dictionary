@@ -5,35 +5,25 @@ import SearchBar from "@/components/SearchBar";
 import TopHeader from "@/components/TopHeader";
 import { getData } from "@/utils/functions";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import sorryIcon from "@/public/sorry.png";
 import bookAnimate from "@/public/search-book.gif";
 import failedIcon from "@/public/remove.png";
 
 const Index = () => {
-  const [isFocused, setIsFocused] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
   const [searchResults, setSearchResults] = useState<any>();
 
-  const searchHandler = async () =>
+  const searchHandler = async (e: FormEvent) => {
+    e.preventDefault();
     setSearchResults(await getData(searchRef.current?.value as string));
-
-  const keyDownHandler = async (e: KeyboardEvent) =>
-    e.code === "Enter" && (await searchHandler());
-
-  useEffect(() => {
-    isFocused && document.addEventListener("keypress", keyDownHandler);
-
-    return () => document.removeEventListener("keypress", keyDownHandler);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isFocused]);
+  };
 
   return (
     <div className="dark:bg-black min-h-screen bg-white flex flex-col items-center">
       <div className="w-11/12 sm:w-4/5 md:w-3/4 xl:w-1/2 pt-8 pb-16 flex flex-col gap-y-8">
         <TopHeader />
         <SearchBar
-          focusHandler={() => setIsFocused(true)}
           searchHandler={searchHandler}
           search={searchRef}
         />
