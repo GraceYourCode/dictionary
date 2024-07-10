@@ -12,11 +12,9 @@ const Header = ({
 }) => {
   const [audioSource, setAudioSource] = useState(audio);
   const sound = useRef<HTMLAudioElement>(null);
-  console.log(audio);
 
   useEffect(() => {
     setAudioSource(audio);
-    console.log(audioSource);
   }, [audio, audioSource]);
 
   const playSound = () => {

@@ -8,7 +8,6 @@ const MainContent = ({
   searchContents: any;
   search: () => void;
 }) => {
-  console.log(searchContents);
   return (
     <div className="flex flex-col gap-10">
       <Header
